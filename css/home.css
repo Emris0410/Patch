@@ -58,7 +58,7 @@ header {
 }
 
 .top-filters {
-  display: flex; /* để hiện popup lọc */
+  display: none; /* để hiện popup lọc */
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
