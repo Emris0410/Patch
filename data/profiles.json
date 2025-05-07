@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Harry Potter",
+    "gender": "Nam",
+    "role": "Nhân vật chính",
+    "tags": ["Gryffindor", "Hogwarts", "Phù thủy"],
+    "au": "Canon",
+    "xu_huong_tinh_duc": "Hetero",
+    "ban_dang_gioi": "Cis",
+    "model": "Classic",
+    "image": "https://example.com/harry.jpg"
+  },
+  {
+    "name": "Hermione Granger",
+    "gender": "Nữ",
+    "role": "Bạn thân",
+    "tags": ["Gryffindor", "Thông minh", "Muggle-born"],
+    "au": "Canon",
+    "xu_huong_tinh_duc": "Hetero",
+    "ban_dang_gioi": "Cis",
+    "model": "Classic",
+    "image": "https://example.com/hermione.jpg"
+  },
+  {
+    "name": "Draco Malfoy",
+    "gender": "Nam",
+    "role": "Đối thủ",
+    "tags": ["Slytherin", "Thuần huyết", "Giàu có"],
+    "au": "Canon",
+    "xu_huong_tinh_duc": "Hetero",
+    "ban_dang_gioi": "Cis",
+    "model": "Classic",
+    "image": "https://example.com/draco.jpg"
+  },
+  {
+    "name": "Luna Lovegood",
+    "gender": "Nữ",
+    "role": "Bạn học",
+    "tags": ["Ravenclaw", "Kỳ quặc", "Mộng mơ"],
+    "au": "Canon",
+    "xu_huong_tinh_duc": "Hetero",
+    "ban_dang_gioi": "Cis",
+    "model": "Classic",
+    "image": "https://example.com/luna.jpg"
+  },
+  {
+    "name": "Tom Riddle",
+    "gender": "Nam",
+    "role": "Phản diện",
+    "tags": ["Slytherin", "Hắc ám", "Voldemort"],
+    "au": "Canon",
+    "xu_huong_tinh_duc": "Asexual",
+    "ban_dang_gioi": "Cis",
+    "model": "Dark",
+    "image": "https://example.com/tom.jpg"
+  }
+]

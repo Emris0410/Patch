@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile UI</title>
+  <style>
+    :root {
+      --bg-main: #b19164;
+      --bg-header: #f0d9a1;
+      --bg-card: #fce3b7;
+      --bg-input: #fdf0cd;
+      --bg-btn: #f0e3c1;
+      --active-border: #765fc2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-main);
+    }
+
+    header {
+      display: flex;
+      background-color: var(--bg-header);
+      padding: 1rem;
+      border-radius: 0 0 12px 12px;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .avatar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .search-section {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 10px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: none;
+      background-color: var(--bg-input);
+    }
+
+    .top-filters {
+      display: none;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.3rem 1rem;
+      border-radius: 999px;
+      background-color: var(--bg-btn);
+      border: 2px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      background-color: #e8d4aa;
+    }
+
+    .filter-btn.active {
+      border-color: var(--active-border);
+    }
+
+    .layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+
+    aside.sidebar-container {
+      background-color: var(--bg-main);
+      padding: 1rem;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      width: 250px;
+      min-width: 200px;
+      height: fit-content;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .sidebar button {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: none;
+      background-color: var(--bg-btn);
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .sidebar button:hover {
+      background-color: #e0cfa5;
+    }
+
+    main.main {
+      flex: 1;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .profile-card {
+      display: flex;
+      background-color: var(--bg-card);
+      padding: 1rem;
+      border-radius: 12px;
+      width: calc(50% - 1rem);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-card img {
+      width: 80px;
+      height: 80px;
+      margin-right: 1rem;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .info div {
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .profile-card {
+        width: 100%;
+      }
+
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="avatar">
+      <img src="https://via.placeholder.com/100" alt="Ảnh đại diện người dùng">
+    </div>
+    <div class="search-section">
+      <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm...">
+        <span>🔍</span>
+        <button id="openTagSelector">Chọn tag</button>
+        <!-- Form chọn tag ẩn -->
+        <div id="tagSelectorModal" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #fff7e2; padding: 1rem; border-radius: 10px; z-index: 999; max-height: 80vh; overflow-y: auto; box-shadow: 0 0 10px rgba(0,0,0,0.3)">
+          <h3>Chọn Tag</h3>
+          <div id="tagFormContent"></div>
+          <div style="margin-top: 1rem; text-align: right;">
+            <button id="applyTagsBtn">Xác nhận</button>
+            <button id="closeTagSelector">Đóng</button>
+          </div>
+        </div>
+      </div>
+      <div class="top-filters"></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar-container">
+      <div class="sidebar">
+        <button>Thông tin cơ bản ban đầu</button>
+        <button>Card - Ảnh</button>
+        <button>Pro5 các au khác</button>
+        <button>Các câu chuyện</button>
+        <button>Fic</button>
+        <button>Lưu art</button>
+        <button>Linh tinh</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="card-container">
+        <!-- Cards hiển thị ở đây -->
+      </section>
+    </main>
+  </div>
+
+  <script>
+    let topFilters;
+    let tagCheckboxes = {};
+    let profiles = [];
+    let cardContainer;
+  
+    function createProfileCard(profile) {
+      const card = document.createElement('div');
+      card.className = 'profile-card';
+      card.innerHTML = `
+        <img src="${profile.image}" alt="Ảnh ${profile.name}">
+        <div class="info">
+          <div><strong>Tên:</strong> ${profile.name}</div>
+          <div><strong>Giới tính:</strong> ${profile.gender}</div>
+          <div><strong>Vai trò:</strong> ${profile.role}</div>
+        </div>
+      `;
+      return card;
+    }
+  
+    function filterCards() {
+      const activeTags = Array.from(topFilters.querySelectorAll('.filter-btn.active')).map(btn => btn.textContent);
+      cardContainer.innerHTML = '';
+    
+      const filteredProfiles = profiles.filter(profile => {
+        const profileTags = [
+          ...(profile.tags || []),
+          profile.gender,
+          profile.role,
+          profile.au,
+          profile.ban_dang_gioi,
+          profile.model,
+          profile.xu_huong_tinh_duc
+        ].filter(Boolean);
+    
+        // Nếu không chọn tag nào thì hiển thị tất cả
+        if (activeTags.length === 0) return true;
+    
+        // Lọc theo AND: tất cả tag phải khớp
+        return activeTags.every(tag => profileTags.includes(tag));
+      });
+    
+      if (filteredProfiles.length === 0) {
+        cardContainer.innerHTML = '<p>Không tìm thấy kết quả phù hợp.</p>';
+      } else {
+        filteredProfiles.forEach(profile => {
+          cardContainer.appendChild(createProfileCard(profile));
+        });
+      }
+    }
+    
+    
+  
+    async function loadData() {
+      try {
+        const [profilesRes, tagsRes] = await Promise.all([
+          fetch('./data/profiles.json'),
+          fetch('./data/tags.json')
+        ]);
+  
+        if (!profilesRes.ok || !tagsRes.ok) throw new Error('Không thể tải dữ liệu JSON');
+  
+        profiles = await profilesRes.json();
+        const tags = await tagsRes.json();
+  
+        if (!tags || typeof tags !== 'object') throw new Error('tags.json không hợp lệ');
+  
+        topFilters = document.querySelector('.top-filters');
+        const tagFormContent = document.getElementById('tagFormContent');
+        cardContainer = document.querySelector('.card-container');
+  
+        // Xử lý modal
+        document.getElementById('openTagSelector').addEventListener('click', () => {
+          document.getElementById('tagSelectorModal').style.display = 'block';
+        });
+  
+        document.getElementById('closeTagSelector').addEventListener('click', () => {
+          document.getElementById('tagSelectorModal').style.display = 'none';
+        });
+  
+        const addFilterButtons = (tagsList, container) => {
+          tagsList.forEach(tag => {
+            const btn = document.createElement('div');
+            btn.className = 'filter-btn';
+            btn.textContent = tag;
+            btn.onclick = () => {
+              btn.classList.toggle('active');
+              filterCards();
+            };
+            container.appendChild(btn);
+          });
+        };
+  
+        const createTagGroup = (title, tagList) => {
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = `<h4>${title}</h4>`;
+          tagList.forEach(tag => {
+            const label = document.createElement('label');
+            label.style.display = 'inline-block';
+            label.style.margin = '0.2rem';
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = tag;
+            tagCheckboxes[tag] = checkbox;
+            label.appendChild(checkbox);
+            label.append(` ${tag}`);
+            wrapper.appendChild(label);
+          });
+          tagFormContent.appendChild(wrapper);
+        };
+  
+        // Tạo checkbox nhóm
+        createTagGroup('AU', tags['au'] || []);
+        createTagGroup('Giới tính', tags['gioi_tinh'] || []);
+        createTagGroup('Xu hướng tính dục', tags['xu_huong_tinh_duc'] || []);
+        createTagGroup('Bản dạng giới', tags['ban_dang_gioi'] || []);
+        createTagGroup('Model', tags['model'] || []);
+  
+        // Tạo filter button
+        ['au', 'gioi_tinh', 'xu_huong_tinh_duc', 'ban_dang_gioi', 'model'].forEach(key => {
+          addFilterButtons(tags[key] || [], topFilters);
+        });
+  
+        // Render lần đầu
+        filterCards();
+  
+      } catch (error) {
+        console.error(error);
+        alert('Có lỗi khi tải dữ liệu.');
+      }
+    }
+  
+    document.getElementById('applyTagsBtn').addEventListener('click', () => {
+      topFilters.innerHTML = '';
+      const selectedTags = [];
+  
+      for (const tag in tagCheckboxes) {
+        if (tagCheckboxes[tag].checked) {
+          selectedTags.push(tag);
+  
+          const btn = document.createElement('div');
+          btn.className = 'filter-btn active';
+          btn.textContent = tag;
+          btn.onclick = () => {
+            btn.remove();
+            tagCheckboxes[tag].checked = false;
+            filterCards();
+          };
+          topFilters.appendChild(btn);
+        }
+      }
+  
+      topFilters.style.display = selectedTags.length > 0 ? 'flex' : 'none';
+      filterCards();
+      document.getElementById('tagSelectorModal').style.display = 'none';
+    });
+  
+    window.onload = loadData;
+  </script>
+  
+  
+</body>
+</html>

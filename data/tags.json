@@ -1,0 +1,7 @@
+{
+  "au": ["tag1", "tag2"],
+  "gioi_tinh": ["Nam", "Nữ"],
+  "xu_huong_tinh_duc": ["Hetero", "Asexual"],
+  "ban_dang_gioi": ["tagA", "tagB"],
+  "model": ["tagX", "tagY"]
+}

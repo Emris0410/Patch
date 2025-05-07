@@ -1,0 +1,126 @@
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #a79063;
+}
+
+.header {
+  display: flex;
+  background-color: #a79063;
+  padding: 1rem;
+  border-radius: 0 0 12px 12px;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.search-section {
+  flex: 1;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #f1bdaf;
+}
+
+.top-filters {
+  display: none;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.top-filters.visible {
+  display: flex;
+}
+
+.filter-btn {
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  background-color: black;
+  border: 2px solid transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  border-color: #765fc2;
+}
+
+.layout {
+  display: flex;
+  margin-top: 15px;
+  padding: 1rem;
+}
+
+.sidebar-container {
+  background-color: #a79063;
+  padding: 1rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 250px;
+  height: fit-content;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar button {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #f1bdaf;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.main {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.profile-card {
+  display: flex;
+  background-color: #fce3b7;
+  padding: 1rem;
+  border-radius: 12px;
+  width: calc(50% - 1rem);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card img {
+  width: 80px;
+  height: 80px;
+  margin-right: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
