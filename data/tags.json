@@ -1,7 +1,9 @@
 {
-  "au": ["tag1", "tag2"],
-  "gioi_tinh": ["Nam", "Nữ"],
-  "xu_huong_tinh_duc": ["Hetero", "Asexual"],
-  "ban_dang_gioi": ["tagA", "tagB"],
-  "model": ["tagX", "tagY"]
+  "worlbuild": ["Sol", "Fantasy"],
+  "gioi_tinh": ["Nam", "Nữ", "Liên giới"],
+  "xu_huong_tinh_duc": ["Hetero", "Asexual", "Gay", "Bisexual", "Lesbian", "Pansexual", "LoverSexual"],
+  "ban_dang_gioi": ["trans", "non-binary", "Cis"],
+  "model": ["Thanh tao", "Gấu", "Thư sinh", "Cao", "Ngực bự", "da ngâm", "Yêu mị"],
+  "au": ["canon"],
+  "spec": ["Con người", "Elf", "Vampire"]
 }
