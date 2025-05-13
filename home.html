@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bakerie&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../Patch/css/home.css">
+  <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
   <header>
@@ -18,16 +18,22 @@
       <div class="search-bar">
         <input type="text" placeholder="Tìm kiếm...">
         <span>🔍</span>
-        <button id="openTagSelector">Chọn tag</button>
+        <button id="openTagSelector" class="icon-button" title="Chọn tag">
+          <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
+            <path fill="#d6cbb1" d="M3.9 54.9C10.5 40.9 24.5 32 40 32l432 0c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9 320 448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6l0-79.1L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/>
+          </svg>
+        </button>
+
         <!-- Form chọn tag ẩn -->
         <div id="tagSelectorModal" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #fff7e2; padding: 1rem; border-radius: 10px; z-index: 999; max-height: 80vh; overflow-y: auto; box-shadow: 0 0 10px rgba(0,0,0,0.3)">
           <h3>Chọn Tag</h3>
           <div id="tagFormContent"></div>
           <div style="margin-top: 1rem; text-align: right;">
-            <button id="applyTagsBtn">Xác nhận</button>
-            <button id="closeTagSelector">Đóng</button>
+            <button id="applyTagsBtn" class="brown-button">Xác nhận</button>
+            <button id="closeTagSelector" class="brown-button outline">Đóng</button>
           </div>
         </div>
+
       </div>
       <div class="top-filters"></div>
     </div>
@@ -36,13 +42,13 @@
   <div class="layout">
     <aside class="sidebar-container">
       <div class="sidebar">
-        <button>Thông tin cơ bản ban đầu</button>
-        <button>Card - Ảnh</button>
-        <button>Pro5 các au khác</button>
-        <button>Các câu chuyện</button>
-        <button>Fic</button>
-        <button>Lưu art</button>
-        <button>Linh tinh</button>
+        <button><a href="home.html" class="sidebar-button">Thông tin cơ bản ban đầu</a></button>
+        <button><a href="#" class="sidebar-button">Card - Ảnh</a></button>
+        <button><a href="#" class="sidebar-button">Pro5 các au khác</a></button>
+        <button><a href="#" class="sidebar-button">Các câu chuyện</a></button>
+        <button><a href="#" class="sidebar-button">Fic</a></button>
+        <button><a href="#" class="sidebar-button">Lưu art</a></button>
+        <button><a href="#" class="sidebar-button">Linh tinh</a></button>
       </div>
     </aside>
 
@@ -73,6 +79,13 @@
           <div><strong>Mô tả:</strong> ${profile.Descipt}</div>
         </div>
       `;
+      // Thêm sự kiện click để chuyển hướng
+      if (profile.link) {
+        card.style.cursor = "pointer";
+        card.addEventListener('click', () => {
+        window.location.href = profile.link;
+        });
+      }
       return card;
     }
   

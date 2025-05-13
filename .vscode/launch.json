@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open intro.html",
-            "file": "d:\\All Of My Projec\\Patch\\intro.html"
+            "name": "Open index.html",
+            "file": "d:\\All Of My Projec\\Patch\\index.html"
         }
     ]
 }

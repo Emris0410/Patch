@@ -1,3 +1,10 @@
+
+@font-face {
+  font-family: Lora;
+  src: url(../assets/fonts/Lora/Lora-VariableFont_wght.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --bg-main: #a79063;
   --bg-header: #a79063;
@@ -17,7 +24,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Lora', cursive;
   background-color: var(--bg-main);
 }
 
@@ -181,4 +188,40 @@ main.main {
   .search-section {
     min-width: 100%;
   }
+}
+
+.sidebar-button {
+  color: inherit;             /* Kế thừa màu chữ từ phần tử cha */
+  text-decoration: none;     /* Bỏ gạch chân */
+}
+
+.brown-button {
+  background-color: #c9a27e; /* nâu nhạt */
+  color: #fff7e2;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.brown-button:hover {
+  background-color: #b98f6b;
+  transform: scale(1.02);
+}
+
+.brown-button:active {
+  transform: scale(0.98);
+}
+
+.brown-button.outline {
+  background-color: transparent;
+  color: #9f5724;
+  border: 2px solid #c9a27e;
+}
+
+.brown-button.outline:hover {
+  background-color: #f2e1cc;
 }

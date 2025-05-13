@@ -33,7 +33,8 @@
     "ban_dang_gioi": "Cis",
     "model": "Thanh tao",
     "Descipt": "Cao 1m80, nặng khoảng 68kg. Hầu tước cao quý, soi rọi con chó điên.",
-    "image": "./assets/images/Cle.png"
+    "image": "./assets/images/Cle.png",
+    "link": "./information/Cle.html"
   },
   {
     "name": "Phong Yên",
@@ -45,6 +46,7 @@
     "ban_dang_gioi": "Cis",
     "model": "Yêu mị",
     "Descipt": "Cao 1m82, nặng khoảng 70kg. Con chó điên sẵn sàng vì chủ nhân mà xâu xé thế giới",
-    "image": "./assets/images/PY.png"
+    "image": "./assets/images/PY.png",
+    "link": "/information/PY.html"
   }
 ]
