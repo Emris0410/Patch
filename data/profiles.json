@@ -9,7 +9,8 @@
     "ban_dang_gioi": "Cis",
     "model": "Thư sinh",
     "Descipt": "Cao 1m75, nặng khoảng 63kg. Là một câu sinh viên Luật, mới 20 tuổi",
-    "image": "./assets/images/VC.png"
+    "image": "./assets/images/VC.png",
+    "link": "./information/VC.html"
   },
   {
     "name": "Thiên Tường",
@@ -28,7 +29,7 @@
     "gender": "Nam",
     "Spec": "Vampire",
     "au": "Canon",
-    "worlbuild": "Sol",
+    "worlbuild": "Fantasy",
     "xu_huong_tinh_duc": "Pansexual",
     "ban_dang_gioi": "Cis",
     "model": "Thanh tao",
@@ -41,7 +42,7 @@
     "gender": "Nam",
     "Spec": "Con người",
     "au": "Canon",
-    "worlbuild": "Sol",
+    "worlbuild": "Fantasy",
     "xu_huong_tinh_duc": "LoverSexual",
     "ban_dang_gioi": "Cis",
     "model": "Yêu mị",

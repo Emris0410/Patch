@@ -16,7 +16,7 @@
     </div>
     <div class="search-section">
       <div class="search-bar">
-        <input type="text" placeholder="Tìm kiếm...">
+        <input id="searchInput" type="text" placeholder="Tìm kiếm...">
         <span>🔍</span>
         <button id="openTagSelector" class="icon-button" title="Chọn tag">
           <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
@@ -91,8 +91,9 @@
   
     function filterCards() {
       const activeTags = Array.from(topFilters.querySelectorAll('.filter-btn.active')).map(btn => btn.textContent);
+      const keyword = normalizeString(searchInput.value.trim());
       cardContainer.innerHTML = '';
-    
+
       const filteredProfiles = profiles.filter(profile => {
         const profileTags = [
           ...(profile.tags || []),
@@ -101,16 +102,30 @@
           profile.au,
           profile.ban_dang_gioi,
           profile.model,
-          profile.xu_huong_tinh_duc
+          profile.xu_huong_tinh_duc,
+          profile.worlbuild
         ].filter(Boolean);
-    
-        // Nếu không chọn tag nào thì hiển thị tất cả
-        if (activeTags.length === 0) return true;
-    
-        // Lọc theo AND: tất cả tag phải khớp
-        return activeTags.every(tag => profileTags.includes(tag));
+
+        // Gộp tất cả các thông tin dạng text vào một chuỗi lớn để tìm kiếm
+        const searchableText = normalizeString([
+          profile.name,
+          profile.Descipt,
+          profile.note,
+          profile.extraDesc,
+          profile.model,
+          profile.role,
+          profile.gender,
+          profile.worlbuild
+        ].filter(Boolean).join(' '));
+
+        const matchSearch = keyword === '' || searchableText.includes(keyword);
+
+        // Nếu không chọn tag nào thì bỏ qua bước lọc tag
+        const matchTags = activeTags.length === 0 || activeTags.every(tag => profileTags.includes(tag));
+
+        return matchSearch && matchTags;
       });
-    
+
       if (filteredProfiles.length === 0) {
         cardContainer.innerHTML = '<p>Không tìm thấy kết quả phù hợp.</p>';
       } else {
@@ -119,7 +134,16 @@
         });
       }
     }
-    
+
+    // Chuẩn hóa chuỗi: bỏ dấu và đưa về chữ thường
+    function normalizeString(str) {
+      return str.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, '') // Bỏ dấu tiếng Việt
+        .replace(/[^\w\s]/g, '')         // Bỏ ký tự đặc biệt
+        .trim();
+    }
+      
     
   
     async function loadData() {
@@ -186,11 +210,15 @@
         createTagGroup('Xu hướng tính dục', tags['xu_huong_tinh_duc'] || []);
         createTagGroup('Bản dạng giới', tags['ban_dang_gioi'] || []);
         createTagGroup('Model', tags['model'] || []);
+        createTagGroup('Worlbuild', tags['worlbuild'] || []);
+
   
         // Tạo filter button
-        ['au', 'gioi_tinh', 'xu_huong_tinh_duc', 'ban_dang_gioi', 'model'].forEach(key => {
+        ['au', 'gioi_tinh', 'xu_huong_tinh_duc', 'ban_dang_gioi', 'model', 'worlbuild'].forEach(key => {
           addFilterButtons(tags[key] || [], topFilters);
         });
+
+
   
         // Render lần đầu
         filterCards();
@@ -224,7 +252,14 @@
       topFilters.style.display = selectedTags.length > 0 ? 'flex' : 'none';
       filterCards();
       document.getElementById('tagSelectorModal').style.display = 'none';
+
+      
     });
+
+    document.getElementById('searchInput').addEventListener('input', () => {
+      filterCards();
+    });
+
   
     window.onload = loadData;
   </script>
