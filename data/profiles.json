@@ -17,12 +17,13 @@
     "gender": "Nam",
     "Spec": "Con người",
     "au": "Canon",
-    "worlbuild": "Sol",
+    "worlbuild": ["Sol", "Fantasy"],
     "xu_huong_tinh_duc": "Gay",
     "ban_dang_gioi": "Cis",
     "model": "da ngâm",
     "Descipt": "Cao 1m85, nặng hơn 70kg. Là một câu sinh viên Luật, mới 20 tuổi, chung nhà với Vấn Chương",
-    "image": "./assets/images/TT.png"
+    "image": "./assets/images/TT.png",
+    "link": "./information/TT.html"
   },
   {
     "name": "Clementé Beauregard",
@@ -49,5 +50,31 @@
     "Descipt": "Cao 1m82, nặng khoảng 70kg. Con chó điên sẵn sàng vì chủ nhân mà xâu xé thế giới",
     "image": "./assets/images/PY.png",
     "link": "./information/PY.html"
+  },
+  {
+    "name": "Thaddeus Nightshade",
+    "gender": "Nam",
+    "Spec": "Con người",
+    "au": "Canon",
+    "worlbuild": "Sol",
+    "xu_huong_tinh_duc": "Pansexual",
+    "ban_dang_gioi": "Cis",
+    "model": "Cao lớn",
+    "Descipt": "Cao 1m90, khoảng độ 84kg, hơi lực lưỡng. Tiến sĩ chuyên về thi thể.",
+    "image": "./assets/images/Thad.png",
+    "link": "./information/Thad.html"
+  },
+  {
+    "name": "Jasper Siegfried",
+    "gender": "Nam",
+    "Spec": "Con người",
+    "au": "Canon",
+    "worlbuild": "Sol",
+    "xu_huong_tinh_duc": "Demisexual",
+    "ban_dang_gioi": "Cis",
+    "model": "Gấu",
+    "Descipt": "cao 1m87 và cân nặng 87kg, sở hữu một tạng người khá to. Cò mồi tự do có tổ chức.",
+    "image": "./assets/images/Jas.png",
+    "link": "./information/Jas.html"
   }
 ]

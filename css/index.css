@@ -18,6 +18,10 @@
   font-style: normal;
 }
 
+* {
+    cursor: select !important;
+  }
+
 html, body {
 margin: 0;
 padding: 0;

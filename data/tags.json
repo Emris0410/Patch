@@ -1,9 +1,9 @@
 {
-  "worlbuild": ["Sol", "Fantasy"],
+  "worlbuild": ["Sol", "Fantasy", "HP-universe"],
   "gioi_tinh": ["Nam", "Nữ", "Liên giới"],
-  "xu_huong_tinh_duc": ["Hetero", "Asexual", "Gay", "Bisexual", "Lesbian", "Pansexual", "LoverSexual"],
+  "xu_huong_tinh_duc": ["Hetero", "Asexual", "Gay", "Bisexual", "Lesbian", "Pansexual", "LoverSexual", "Demisexual"],
   "ban_dang_gioi": ["trans", "non-binary", "Cis"],
-  "model": ["Thanh tao", "Gấu", "Thư sinh", "Cao", "Ngực bự", "da ngâm", "Yêu mị"],
+  "model": ["Thanh tao", "Gấu", "Thư sinh", "Cao", "Ngực bự", "da ngâm", "Yêu mị", "Cao lớn"],
   "au": ["Canon"],
   "spec": ["Con người", "Elf", "Vampire"]
 }

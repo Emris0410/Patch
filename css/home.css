@@ -1,3 +1,16 @@
+body, .card-container, .profile-card, .profile-card .info {
+  cursor: default;
+}
+
+.profile-card {
+  user-select: none; /* Ngăn bôi đen text nếu muốn */
+}
+
+.profile-card[style*="cursor: pointer"] {
+  cursor: pointer; /* Nếu có link thì vẫn là pointer */
+}
+
+
 
 @font-face {
   font-family: Lora;
