@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Chibi NKLuc",
+    "image": "./gallery/chibiNKL.png",
+    "tags": ["NKLuc"],
+    "author":"kth"
+  },
+  {
+    "name": "Phong Yên",
+    "image": "./gallery/PY(kth).png",
+    "tags": ["PY"],
+    "author":"kth"
+  },
+  {
+    "name": "Bò sữa Thaddeus",
+    "image": "./gallery/mooThad.png",
+    "tags": ["Thaddeus"],
+    "author":"kth"
+  }
+]

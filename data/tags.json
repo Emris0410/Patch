@@ -6,5 +6,6 @@
   "model": ["Thanh tao", "Gấu", "Thư sinh", "Cao", "Ngực bự", "da ngâm", "Yêu mị", "Cao lớn"],
   "au": ["Canon"],
   "spec": ["Con người", "Elf", "Vampire"],
-  "octp":["octp", "oct3"]
+  "octp":["octp", "oct3"],
+  "couple":["PYCL", "EGAV", "JT", "NKLuc", "PY", "Thaddeus"]
 }

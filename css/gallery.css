@@ -1,0 +1,102 @@
+:root {
+  --bg-main: #a79063;
+  --bg-card: #f2e3ce;
+  --text-dark: #3e3022;
+  --tag-color: #4e3c29;
+  --tag-bg: #e8d4aa;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background-color: var(--bg-main);
+  margin: 0;
+  padding: 1rem;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#searchInput {
+  flex: 2;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 2px solid #cbbfa5;
+  font-size: 1rem;
+}
+
+#tagFilters {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag-btn {
+  background-color: var(--tag-bg);
+  color: var(--tag-color);
+  border: 1px solid #aa9977;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tag-btn.active {
+  background-color: #c7aa76;
+  color: white;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.image-card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  width: calc(33% - 1rem);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.image-card:hover {
+  transform: scale(1.02);
+}
+
+.image-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.image-info {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #ccbda5;
+}
+
+.image-name {
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+}
+
+.image-tags {
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.image-tags span {
+  background-color: var(--tag-bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  color: var(--tag-color);
+}
