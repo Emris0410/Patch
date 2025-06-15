@@ -16,17 +16,19 @@ function createArtCard(art) {
   const card = document.createElement('div');
   card.className = 'art-card';
   card.innerHTML = `
-    <img src="${art.image}" alt="${art.name}">
+    <a href="${art.image}" target="_blank">
+      <img src="${art.image}" alt="${art.name}">
+    </a>
     <div class="art-info">
       <div class="art-name"><strong>${art.name}</strong></div>
-      <div class="art-author"><em>Tác giả: ${art.author || 'Không rõ'}</em></div>
       <div class="art-tags">
-        ${(art.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+        ${art.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
       </div>
     </div>
   `;
   return card;
 }
+
 
 function filterAndRender() {
   const keyword = normalizeString(searchInput.value);
@@ -116,13 +118,6 @@ function setupImageModal() {
     }
   };
 }
-
-// Gọi sau khi DOM đã sẵn sàng
-window.addEventListener('DOMContentLoaded', () => {
-  loadArtData();
-  document.getElementById('searchInput').addEventListener('input', filterAndRender);
-  setupImageModal(); // Thêm dòng này
-});
 
 
 window.addEventListener('DOMContentLoaded', () => {
