@@ -19,8 +19,9 @@ function createArtCard(art) {
     <img src="${art.image}" alt="${art.name}">
     <div class="art-info">
       <div class="art-name"><strong>${art.name}</strong></div>
+      <div class="art-author"><em>Tác giả: ${art.author || 'Không rõ'}</em></div>
       <div class="art-tags">
-        ${Array.isArray(art.tags) ? art.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
+        ${(art.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
       </div>
     </div>
   `;
@@ -46,11 +47,11 @@ function filterAndRender() {
   }
 }
 
-function setupTagFilters(tagsData, tagCategory = 'couple') {
+function setupTagFilters(tagsData) {
   tagFilterBox.innerHTML = '';
+  const coupleTags = tagsData["couple"] || [];
 
-  const tagList = tagsData[tagCategory] || [];
-  tagList.forEach(tag => {
+  coupleTags.forEach(tag => {
     const btn = document.createElement('div');
     btn.className = 'filter-btn';
     btn.textContent = tag;
@@ -83,7 +84,7 @@ async function loadArtData() {
     tagFilterBox = document.getElementById('tagFilterBox');
     searchInput = document.getElementById('searchInput');
 
-    setupTagFilters(tags, 'couple'); // <-- bạn có thể đổi 'couple' thành 'au', 'style', v.v.
+    setupTagFilters(tags);
     filterAndRender();
   } catch (err) {
     console.error(err);
