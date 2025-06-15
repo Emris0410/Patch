@@ -68,8 +68,8 @@ function setupTagFilters(tags) {
 async function loadArtData() {
   try {
     const [artRes, tagsRes] = await Promise.all([
-      fetch('./cardart.json'),
-      fetch('./tags.json')
+      fetch('./data/cardart.json'),
+      fetch('./data/tags.json')
     ]);
 
     if (!artRes.ok || !tagsRes.ok) throw new Error('Không thể tải dữ liệu');
