@@ -1,77 +1,95 @@
-const galleryContainer = document.getElementById("gallery");
-const searchInput = document.getElementById("searchInput");
-const tagFilterContainer = document.getElementById("tagFilters");
+let allArts = [];
+let activeTags = [];
+let artContainer;
+let tagFilterBox;
+let searchInput;
 
-let allCards = [];
-let activeTag = null;
-
-async function loadData() {
-  const [cardsRes, tagsRes] = await Promise.all([
-    fetch("cardart.json"),
-    fetch("tags.json")
-  ]);
-
-  allCards = await cardsRes.json();
-  const tags = await tagsRes.json();
-
-  renderTags(tags);
-  renderCards(allCards);
+function normalizeString(str) {
+  return str.toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, '') // bỏ dấu tiếng Việt
+    .replace(/[^\w\s]/g, '') // bỏ ký tự đặc biệt
+    .trim();
 }
 
-function renderTags(tags) {
-  tagFilterContainer.innerHTML = "";
-  tags.forEach(tag => {
-    const btn = document.createElement("button");
-    btn.className = "tag-btn";
-    btn.innerText = tag;
-    btn.onclick = () => {
-      if (activeTag === tag) {
-        activeTag = null;
-        btn.classList.remove("active");
-      } else {
-        activeTag = tag;
-        document.querySelectorAll(".tag-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-      }
-      filterAndRender();
-    };
-    tagFilterContainer.appendChild(btn);
-  });
-}
-
-function renderCards(cards) {
-  galleryContainer.innerHTML = "";
-  cards.forEach(card => {
-    const div = document.createElement("div");
-    div.className = "image-card";
-
-    div.innerHTML = `
-      <img src="${card.image}" alt="${card.name}">
-      <div class="image-info">
-        <div class="image-name">${card.name}</div>
-        <div class="image-tags">
-          ${card.tags.map(tag => `<span>${tag}</span>`).join("")}
-        </div>
+function createArtCard(art) {
+  const card = document.createElement('div');
+  card.className = 'art-card';
+  card.innerHTML = `
+    <img src="${art.image}" alt="${art.name}">
+    <div class="art-info">
+      <div class="art-name"><strong>${art.name}</strong></div>
+      <div class="art-tags">
+        ${art.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
       </div>
-    `;
-
-    galleryContainer.appendChild(div);
-  });
+    </div>
+  `;
+  return card;
 }
 
 function filterAndRender() {
-  const keyword = searchInput.value.trim().toLowerCase();
+  const keyword = normalizeString(searchInput.value);
+  artContainer.innerHTML = '';
 
-  const filtered = allCards.filter(card => {
-    const matchName = card.name.toLowerCase().includes(keyword);
-    const matchTag = !activeTag || card.tags.includes(activeTag);
-    return matchName && matchTag;
+  const filtered = allArts.filter(art => {
+    const nameMatch = normalizeString(art.name).includes(keyword);
+    const tagMatch = activeTags.length === 0 || activeTags.every(tag => art.tags.includes(tag));
+    return nameMatch && tagMatch;
   });
 
-  renderCards(filtered);
+  if (filtered.length === 0) {
+    artContainer.innerHTML = '<p>Không tìm thấy kết quả phù hợp.</p>';
+  } else {
+    filtered.forEach(art => {
+      artContainer.appendChild(createArtCard(art));
+    });
+  }
 }
 
-searchInput.addEventListener("input", filterAndRender);
+function setupTagFilters(tags) {
+  tagFilterBox.innerHTML = '';
+  tags.forEach(tag => {
+    const btn = document.createElement('div');
+    btn.className = 'filter-btn';
+    btn.textContent = tag;
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      if (btn.classList.contains('active')) {
+        activeTags.push(tag);
+      } else {
+        activeTags = activeTags.filter(t => t !== tag);
+      }
+      filterAndRender();
+    });
+    tagFilterBox.appendChild(btn);
+  });
+}
 
-// Bắt đầu tải dữ liệu khi trang sẵn sàng
-window.onload = loadData;
+async function loadArtData() {
+  try {
+    const [artRes, tagsRes] = await Promise.all([
+      fetch('./cardart.json'),
+      fetch('./tags.json')
+    ]);
+
+    if (!artRes.ok || !tagsRes.ok) throw new Error('Không thể tải dữ liệu');
+
+    allArts = await artRes.json();
+    const tags = await tagsRes.json();
+
+    artContainer = document.getElementById('artContainer');
+    tagFilterBox = document.getElementById('tagFilterBox');
+    searchInput = document.getElementById('searchInput');
+
+    setupTagFilters(tags);
+    filterAndRender();
+  } catch (err) {
+    console.error(err);
+    alert('Có lỗi khi tải dữ liệu.');
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadArtData();
+  document.getElementById('searchInput').addEventListener('input', filterAndRender);
+});
