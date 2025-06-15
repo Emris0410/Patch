@@ -92,6 +92,39 @@ async function loadArtData() {
   }
 }
 
+// Setup modal viewer
+function setupImageModal() {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const closeBtn = document.querySelector('.image-modal .close');
+
+  document.body.addEventListener('click', (e) => {
+    if (e.target.closest('.art-card img')) {
+      const img = e.target.closest('.art-card img');
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    }
+  });
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+}
+
+// Gọi sau khi DOM đã sẵn sàng
+window.addEventListener('DOMContentLoaded', () => {
+  loadArtData();
+  document.getElementById('searchInput').addEventListener('input', filterAndRender);
+  setupImageModal(); // Thêm dòng này
+});
+
+
 window.addEventListener('DOMContentLoaded', () => {
   loadArtData();
   document.getElementById('searchInput').addEventListener('input', filterAndRender);
