@@ -147,53 +147,76 @@ aside.sidebar-container {
 }
 
 
-.art-container {
+#artContainer.art-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
+  padding: 1rem;
 }
 
-.image-card {
+.art-card {
   background-color: var(--bg-card);
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  width: calc(33% - 1rem);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: calc(33.333% - 2rem); /* 3 card / dòng */
+  display: flex;
+  flex-direction: column;
 }
 
-.image-card:hover {
-  transform: scale(1.02);
+.art-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
-.image-card img {
+.art-card img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-bottom: 1px solid var(--common-border);
 }
 
-.image-info {
-  padding: 0.5rem 1rem;
-  border-top: 1px solid #ccbda5;
+.art-info {
+  padding: 0.75rem 1rem;
 }
 
-.image-name {
+.art-name {
+  font-size: 1rem;
   font-weight: bold;
-  color: var(--text-dark);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
-.image-tags {
+.art-author {
   font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.art-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
-.image-tags span {
-  background-color: var(--tag-bg);
-  padding: 0.2rem 0.5rem;
-  border-radius: 8px;
-  color: var(--tag-color);
+.art-tags .tag {
+  background-color: var(--bg-btn);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid var(--common-border);
+  color: #333;
+}
+
+@media (max-width: 992px) {
+  .art-card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .art-card {
+    width: 100%;
+  }
 }
