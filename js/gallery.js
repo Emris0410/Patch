@@ -20,7 +20,7 @@ function createArtCard(art) {
     <div class="art-info">
       <div class="art-name"><strong>${art.name}</strong></div>
       <div class="art-tags">
-        ${art.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        ${Array.isArray(art.tags) ? art.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
       </div>
     </div>
   `;
@@ -33,7 +33,7 @@ function filterAndRender() {
 
   const filtered = allArts.filter(art => {
     const nameMatch = normalizeString(art.name).includes(keyword);
-    const tagMatch = activeTags.length === 0 || activeTags.every(tag => art.tags.includes(tag));
+    const tagMatch = activeTags.length === 0 || activeTags.every(tag => (art.tags || []).includes(tag));
     return nameMatch && tagMatch;
   });
 
@@ -46,9 +46,11 @@ function filterAndRender() {
   }
 }
 
-function setupTagFilters(tags) {
+function setupTagFilters(tagsData, tagCategory = 'couple') {
   tagFilterBox.innerHTML = '';
-  tags.forEach(tag => {
+
+  const tagList = tagsData[tagCategory] || [];
+  tagList.forEach(tag => {
     const btn = document.createElement('div');
     btn.className = 'filter-btn';
     btn.textContent = tag;
@@ -81,7 +83,7 @@ async function loadArtData() {
     tagFilterBox = document.getElementById('tagFilterBox');
     searchInput = document.getElementById('searchInput');
 
-    setupTagFilters(tags);
+    setupTagFilters(tags, 'couple'); // <-- bạn có thể đổi 'couple' thành 'au', 'style', v.v.
     filterAndRender();
   } catch (err) {
     console.error(err);
