@@ -76,5 +76,31 @@
     "Descipt": "cao 1m87 và cân nặng 87kg, sở hữu một tạng người khá to. Cò mồi tự do có tổ chức.",
     "image": "./assets/images/Jas.png",
     "link": "./information/Jas.html"
+  },
+  {
+    "name": "Arthur Vincent",
+    "gender": "Nam",
+    "Spec": "Con người",
+    "au": "Canon",
+    "worlbuild": "HP-universe",
+    "xu_huong_tinh_duc": "LoverSexual",
+    "ban_dang_gioi": "Cis",
+    "model": "Thư sinh",
+    "Descipt": "Cao khoảng 1m7, hơi thấp so với quy chuẩn đàn ông châu Âu, nặng khoảng 58kg. Một giáo sư Lịch Sử Pháp Thuật, liệu có đơn giản thế?",
+    "image": "./assets/images/AV.png",
+    "link": "./information/AV.html"
+  },
+  {
+    "name": "Emris Glückstein",
+    "gender": "Nam",
+    "Spec": "Con người",
+    "au": "Canon",
+    "worlbuild": "HP-universe",
+    "xu_huong_tinh_duc": "LoverSexual",
+    "ban_dang_gioi": "Cis",
+    "model": "Thanh tao",
+    "Descipt": "Cao 1m87, lượng cơ của hắn nhiều hơn lượng mỡ gấp rưỡi lần, với cân nặng 79 kg. Từng là thuộc hạ Grindelwald, học trò của Carnifate Garson.",
+    "image": "./assets/images/EG.png",
+    "link": "./information/EG.html"
   }
 ]

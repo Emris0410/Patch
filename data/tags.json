@@ -5,5 +5,6 @@
   "ban_dang_gioi": ["trans", "non-binary", "Cis"],
   "model": ["Thanh tao", "Gấu", "Thư sinh", "Cao", "Ngực bự", "da ngâm", "Yêu mị", "Cao lớn"],
   "au": ["Canon"],
-  "spec": ["Con người", "Elf", "Vampire"]
+  "spec": ["Con người", "Elf", "Vampire"],
+  "octp":["octp", "oct3"]
 }
