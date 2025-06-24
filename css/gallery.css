@@ -151,20 +151,24 @@ aside.sidebar-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: center;
   padding: 1rem;
+  justify-content: space-between; /* Giúp dàn đều các card */
 }
 
 .art-card {
   background-color: var(--bg-card);
   border-radius: 16px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  border: 2px solid var(--common-border); /* Thêm border xung quanh card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Vẫn giữ shadow nhẹ */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: calc(33.333% - 2rem); /* 3 card / dòng */
+  flex: 1 1 calc(33.333% - 1.5rem);
+  max-width: calc(33.333% - 1.5rem);
+  min-width: 250px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
+
 
 .art-card:hover {
   transform: translateY(-5px);
