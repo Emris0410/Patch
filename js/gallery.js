@@ -5,14 +5,17 @@ let tagFilterBox;
 let tagFormContent;
 let searchInput;
 
+// Hàm normalize chuỗi (không dấu)
 function normalizeString(str) {
-  return str.toLowerCase()
+  return str
+    .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^\w\s]/g, '')
+    .replace(/[\u0300-\u036f]/g, '') // xóa dấu
+    .replace(/[^\w\s]/g, '')       // xóa ký tự đặc biệt
     .trim();
 }
 
+// Tạo card ảnh
 function createArtCard(art) {
   const card = document.createElement('div');
   card.className = 'art-card';
@@ -28,6 +31,7 @@ function createArtCard(art) {
   return card;
 }
 
+// Lọc và render danh sách
 function filterAndRender() {
   const keyword = normalizeString(searchInput.value);
   artContainer.innerHTML = '';
@@ -41,17 +45,15 @@ function filterAndRender() {
   if (filtered.length === 0) {
     artContainer.innerHTML = '<p>Không tìm thấy kết quả phù hợp.</p>';
   } else {
-    filtered.forEach(art => {
-      artContainer.appendChild(createArtCard(art));
-    });
+    filtered.forEach(art => artContainer.appendChild(createArtCard(art)));
   }
 }
 
-// Tạo checkbox tag couple
+// Tạo checkbox lọc tags
 function setupTagFilters(tagsData) {
   tagFormContent.innerHTML = '';
   const coupleTags = tagsData.couple || [];
-  
+
   coupleTags.forEach(tag => {
     const label = document.createElement('label');
     label.style.display = 'inline-block';
@@ -63,14 +65,16 @@ function setupTagFilters(tagsData) {
   });
 }
 
+// Lưu các tag được chọn và lọc
 function applySelectedTags() {
-  activeTags = Array.from(tagFormContent.querySelectorAll('input[type=checkbox]:checked'))
-    .map(cb => cb.value);
+  activeTags = Array.from(
+    tagFormContent.querySelectorAll('input[type=checkbox]:checked')
+  ).map(cb => cb.value);
   filterAndRender();
   tagFilterBox.style.display = 'none';
 }
 
-// Modal mở full-size ảnh
+// Modal full-size ảnh
 function setupImageModal() {
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImage');
@@ -83,51 +87,54 @@ function setupImageModal() {
     }
   });
 
-  closeBtn.onclick = () => { modal.style.display = "none"; };
+  closeBtn.onclick = () => modal.style.display = "none";
   modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
 }
 
-// Tải dữ liệu
+// Load dữ liệu
 async function loadArtData() {
   try {
     const [artRes, tagsRes] = await Promise.all([
       fetch('./data/cardart.json'),
       fetch('./data/tags.json')
     ]);
-
-    if (!artRes.ok || !tagsRes.ok) throw new Error('Không thể tải dữ liệu');
+    if (!artRes.ok || !tagsRes.ok) throw new Error('Lỗi tải JSON');
 
     allArts = await artRes.json();
     const tagsData = await tagsRes.json();
 
-    artContainer = document.getElementById('artContainer');
-    tagFilterBox = document.getElementById('tagFilterBox');
-    tagFormContent = document.getElementById('tagFormContent');
-    searchInput = document.getElementById('searchInput');
-
-    setupTagFilters(tagsData);
+    setupTagFilters(tagsData); // setup checkbox
     filterAndRender();
-
-    setupImageModal();
-
-    // Sự kiện mở/đóng popup
-    document.getElementById('openTagSelector').addEventListener('click', () => {
-      tagFilterBox.style.display = 'block';
-    });
-    document.getElementById('closeTagSelector').addEventListener('click', () => {
-      tagFilterBox.style.display = 'none';
-    });
-
-    // Nút áp dụng
-    document.getElementById('applyTagsBtn').addEventListener('click', applySelectedTags);
   } catch (err) {
     console.error(err);
     alert('Có lỗi khi tải dữ liệu.');
   }
 }
 
-// Sẵn sàng
+// ——— Chạy khi DOM tải xong ———
 document.addEventListener('DOMContentLoaded', () => {
+  // Gán các phần tử
+  artContainer = document.getElementById('artContainer');
+  tagFilterBox = document.getElementById('tagFilterBox');
+  tagFormContent = document.getElementById('tagFormContent');
+  searchInput = document.getElementById('searchInput');
+
+  // Gắn event listener mở/đóng popup
+  document.getElementById('openTagSelector')
+    .addEventListener('click', () => tagFilterBox.style.display = 'block');
+
+  document.getElementById('closeTagSelector')
+    .addEventListener('click', () => tagFilterBox.style.display = 'none');
+
+  document.getElementById('applyTagsBtn')
+    .addEventListener('click', applySelectedTags);
+
+  // Filter khi gõ search
+  searchInput.addEventListener('input', filterAndRender);
+
+  // Modal ảnh
+  setupImageModal();
+
+  // Fetch data
   loadArtData();
-  document.getElementById('searchInput').addEventListener('input', filterAndRender);
 });
