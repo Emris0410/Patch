@@ -77,6 +77,24 @@ header {
   background-color: var(--bg-input);
 }
 
+.sidebar a {
+  text-decoration: none; /* Xóa gạch chân */
+  color: inherit;         /* Kế thừa màu chữ từ nút */
+  display: block;         /* Để link chiếm toàn bộ nút */
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar a:visited {
+  color: inherit; /* Giữ màu không thay đổi khi đã click */
+}
+
+.sidebar a:hover,
+.sidebar a:focus {
+  text-decoration: none; /* Vẫn không gạch chân khi hover/focus */
+  color: inherit;
+}
+
 .top-filters {
   display: none; /* để hiện popup lọc */
   gap: 0.5rem;

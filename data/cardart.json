@@ -2,7 +2,7 @@
   {
     "name": "Chibi NKLuc",
     "image": "./data/gallery/chibiNKL.png",
-    "tags": ["NKLuc"],
+    "tags": ["NKLuc", "Chibi"],
     "author":"kth"
   },
   {
@@ -15,6 +15,24 @@
     "name": "Bò sữa Thaddeus",
     "image": "./data/gallery/mooThad.png",
     "tags": ["Thaddeus"],
+    "author":"kth"
+  },
+  {
+    "name": "Ánh dương tím",
+    "image": "./data/gallery/Clehoatim.png",
+    "tags": ["Clementé"],
+    "author":"kth"
+  },
+  {
+    "name": "Hạ Nhất Kiếm au Cách Mạng",
+    "image": "./data/gallery/hnk.png",
+    "tags": ["NK"],
+    "author":"kth"
+  },
+  {
+    "name": "Phong Yên sketch",
+    "image": "./data/gallery/PYsketch.png",
+    "tags": ["PY"],
     "author":"kth"
   }
 ]

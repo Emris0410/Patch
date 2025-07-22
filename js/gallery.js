@@ -38,7 +38,7 @@ function filterAndRender() {
 
   const filtered = allArts.filter(art => {
     const nameMatch = normalizeString(art.name).includes(keyword);
-    const tagMatch = activeTags.length === 0 || activeTags.every(tag => art.tags.includes(tag));
+    const tagMatch = activeTags.length === 0 || activeTags.some(tag => art.tags.includes(tag));
     return nameMatch && tagMatch;
   });
 
@@ -49,21 +49,33 @@ function filterAndRender() {
   }
 }
 
+
+// Tạo checkbox lọc tags
 // Tạo checkbox lọc tags
 function setupTagFilters(tagsData) {
   tagFormContent.innerHTML = '';
   const coupleTags = tagsData.couple || [];
 
+  // Thêm CSS flex-wrap cho container tag
+  tagFormContent.style.display = 'flex';
+  tagFormContent.style.flexWrap = 'wrap';
+  tagFormContent.style.gap = '0.5rem';
+
   coupleTags.forEach(tag => {
     const label = document.createElement('label');
-    label.style.display = 'inline-block';
-    label.style.margin = '0.3rem';
+    label.style.display = 'inline-flex';
+    label.style.alignItems = 'center';
+    label.style.padding = '0.2rem 0.5rem';
+    label.style.borderRadius = '8px';
+    label.style.background = 'var(--bg-btn)';
+    label.style.border = '1px solid var(--common-border)';
     label.innerHTML = `
-      <input type="checkbox" value="${tag}"> ${tag}
+      <input type="checkbox" value="${tag}" style="margin-right:0.3rem;"> ${tag}
     `;
     tagFormContent.appendChild(label);
   });
 }
+
 
 // Lưu các tag được chọn và lọc
 function applySelectedTags() {
