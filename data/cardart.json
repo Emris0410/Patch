@@ -34,5 +34,149 @@
     "image": "./data/gallery/PYsketch.png",
     "tags": ["PY"],
     "author":"kth"
+  },
+  {
+    "name": "HNK's bunny.",
+    "image": "./data/gallery/NKbunny.png",
+    "tags": ["NKLuc", "animal"],
+    "author":"kth"
+  },
+  {
+    "name": "Little Clemeownté",
+    "image": "./data/gallery/PYCat.png",
+    "tags": ["Clementé", "animal"],
+    "author":"kth"
+  },
+  {
+    "name": "Lucaníë has a cow",
+    "image": "./data/gallery/LucCow.png",
+    "tags": ["NK", "animal"],
+    "author":"kth"
+  },
+  {
+    "name": "William Truman Heinrich",
+    "image": "./data/gallery/William.png",
+    "tags": ["William"],
+    "author":"kth"
+  },
+  {
+    "name": "Foodie AV",
+    "image": "./data/gallery/AVfood.png",
+    "tags": ["AV", "food"],
+    "author":"kth"
+  },
+  {
+    "name": "Foodie Cle",
+    "image": "./data/gallery/CleF.png",
+    "tags": ["Clementé", "food"],
+    "author":"kth"
+  },
+  {
+    "name": "Foodie EG",
+    "image": "./data/gallery/EGfood.png",
+    "tags": ["EG", "food"],
+    "author":"kth"
+  },
+  {
+    "name": "Louis foodie",
+    "image": "./data/gallery/LouisF.png",
+    "tags": ["Lou", "food"],
+    "author":"kth"
+  },
+  {
+    "name": "Py foodie",
+    "image": "./data/gallery/PYF.png",
+    "tags": ["PY", "food"],
+    "author":"kth"
+  },
+  {
+    "name": "FOOODDDĐ",
+    "image": "./data/gallery/ChibiF.png",
+    "tags": ["food", "Chibi"],
+    "author":"kth"
+  },
+  {
+    "name": "Clementé Beauregard",
+    "image": "./data/gallery/CLE.png",
+    "tags": ["Clementé"],
+    "author": "Dơi Pink"
+  },
+  {
+    "name": "Christine de Alger Ophelia",
+    "image": "./data/gallery/Christine.png",
+    "tags": ["Christine"],
+    "author":"Bạn của kth"
+  },
+  {
+    "name": "Louis",
+    "image": "./data/gallery/Louis.png",
+    "tags": ["Lou"],
+    "author":"kth"
+  },
+  {
+    "name": "Đại gia và phu nhân thỏ.",
+    "image": "./data/gallery/bunnyandcow.png",
+    "tags": ["NKLuc", "animal"],
+    "author":"kth"
+  },
+  {
+    "name": "Us",
+    "image": "./data/gallery/UsEye.png",
+    "tags": ["Us"],
+    "author":"kth"
+  },
+  {
+    "name": "Once i was fell",
+    "image": "./data/gallery/thattime.png",
+    "tags": ["Luc"],
+    "author":"kth"
+  },
+  {
+    "name": "Will You Marry Me, ",
+    "image": "./data/gallery/WYPY.gif",
+    "tags": ["PY", "PYCL"],
+    "author":"kth"
+  },
+  {
+    "name": "My Master?",
+    "image": "./data/gallery/MyCle.gif",
+    "tags": ["PY", "PYCL"],
+    "author":"kth"
+  },
+  {
+    "name": "Augenstern",
+    "image": "./data/gallery/Au.png",
+    "tags": ["Au"],
+    "author":"kth"
+  },
+  {
+    "name": "The diva",
+    "image": "./data/gallery/Thdiva.png",
+    "tags": ["Au"],
+    "author":"kth"
+  },
+  {
+    "name": "William's Body",
+    "image": "./data/gallery/Wbody.png",
+    "tags": ["William"],
+    "author":"kth"
+  },
+  {
+    "name": "Nhân Chính Vũ",
+    "image": "./data/gallery/NCV.png",
+    "tags": ["NCV"],
+    "author":"kth"
+  },
+  {
+    "name": "Oryan Sokratis",
+    "image": "./data/gallery/oryan.png",
+    "tags": ["Oryan"],
+    "author":"kth"
+  },
+  {
+    "name": "You and Me (him)",
+    "image": "./data/gallery/ccc.png",
+    "tags": ["CC"],
+    "author":"kth"
   }
 ]

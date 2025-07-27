@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Character Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f5;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      max-width: 300px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h2 {
+      margin: 0.5rem 0;
+      font-size: 1.25rem;
+    }
+
+    .btn-refresh {
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-refresh:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Who is that pokemon!</h1>
+  <div id="card-container"></div>
+  <button class="btn-refresh" onclick="generateRandomCard()">- 1 túi tiền</button>
+
+  <script>
+    const data = [
+      {"name":"Vấn Chương","image":"./assets/images/VC.png","link":"./information/VC.html"},
+      {"name":"Thiên Tường","image":"./assets/images/TT.png","link":"./information/TT.html"},
+      {"name":"Clementé Beauregard","image":"./assets/images/Cle.png","link":"./information/Cle.html"},
+      {"name":"Phong Yên","image":"./assets/images/PY.png","link":"./information/PY.html"},
+      {"name":"Thaddeus Nightshade","image":"./assets/images/Thad.png","link":"./information/Thad.html"},
+      {"name":"Jasper Siegfried","image":"./assets/images/Jas.png","link":"./information/Jas.html"},
+      {"name":"Arthur Vincent","image":"./assets/images/AV.png","link":"./information/AV.html"},
+      {"name":"Emris Glückstein","image":"./assets/images/EG.png","link":"./information/EG.html"}
+    ];
+
+    function generateRandomCard() {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const character = data[randomIndex];
+
+      const cardHTML = `
+        <div class="card" onclick="window.location.href='${character.link}'">
+          <img src="${character.image}" alt="${character.name}" />
+          <h2>${character.name}</h2>
+        </div>
+      `;
+
+      document.getElementById("card-container").innerHTML = cardHTML;
+    }
+
+    generateRandomCard();
+  </script>
+</body>
+</html>

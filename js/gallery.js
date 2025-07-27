@@ -25,6 +25,7 @@ function createArtCard(art) {
     </a>
     <div class="art-info">
       <div class="art-name"><strong>${art.name}</strong></div>
+      <div class="art-author">Tác giả: ${art.author || 'Chưa rõ'}</div>
       <div class="art-tags">${art.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
     </div>
   `;
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tagFormContent = document.getElementById('tagFormContent');
   searchInput = document.getElementById('searchInput');
 
-  // Gắn event listener mở/đóng popup
+
   document.getElementById('openTagSelector')
     .addEventListener('click', () => tagFilterBox.style.display = 'block');
 
@@ -141,12 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('applyTagsBtn')
     .addEventListener('click', applySelectedTags);
 
-  // Filter khi gõ search
+
   searchInput.addEventListener('input', filterAndRender);
 
-  // Modal ảnh
+
   setupImageModal();
 
-  // Fetch data
   loadArtData();
 });

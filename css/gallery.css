@@ -10,7 +10,9 @@ body, .card-container, .profile-card, .profile-card .info {
   cursor: pointer; /* Nếu có link thì vẫn là pointer */
 }
 
-
+.main {
+  flex: 1; /* Đảm bảo phần ảnh mở rộng phần còn lại */
+}
 
 @font-face {
   font-family: Lora;
@@ -67,6 +69,7 @@ header {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 10px;
+  padding-top: 25px;
 }
 
 .search-bar input {
@@ -126,9 +129,8 @@ header {
 
 .layout {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start; /* Để sidebar và ảnh ngang hàng */
   gap: 1rem;
-  margin-top: 1rem;
   padding: 1rem;
 }
 
@@ -168,24 +170,24 @@ aside.sidebar-container {
 #artContainer.art-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 1rem;
-  justify-content: space-between; /* Giúp dàn đều các card */
+  justify-content: flex-start; /* Các card chạy từ trái sang phải */
+  gap: 1rem;
 }
 
 .art-card {
   background-color: var(--bg-card);
   border-radius: 16px;
-  border: 2px solid var(--common-border); /* Thêm border xung quanh card */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Vẫn giữ shadow nhẹ */
+  border: 2px solid var(--common-border);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  flex: 1 1 calc(33.333% - 1.5rem);
-  max-width: calc(33.333% - 1.5rem);
+  flex: 0 0 280px; /* card gọn và đều */
+  max-width: 280px;
   min-width: 250px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
 
 
 .art-card:hover {

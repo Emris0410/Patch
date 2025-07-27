@@ -67,6 +67,7 @@ header {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 10px;
+  padding-top: 25px;
 }
 
 .search-bar input {
