@@ -7,7 +7,7 @@ const closeModal = document.getElementById("closeModal");
 const characterForm = document.getElementById("characterForm");
 const photoInput = document.getElementById("photoInput");
 
-// Render card theo CSS chuẩn
+// Render card
 function renderCharacters() {
   artContainer.innerHTML = "";
   characters.forEach((char) => {
@@ -56,19 +56,18 @@ function renderCharacters() {
   });
 }
 
-// Modal
+// Modal control
 addBtn.onclick = () => modal.style.display = "block";
 closeModal.onclick = () => modal.style.display = "none";
 window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
 
-// Form submit
+// Lưu nhân vật
 characterForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const reader = new FileReader();
-  reader.onload = function(event) {
+  const saveChar = (photoData) => {
     const newChar = {
-      photo: event.target.result,
+      photo: photoData,
       name: document.getElementById("nameInput").value,
       age: document.getElementById("ageInput").value,
       birthplace: document.getElementById("birthplaceInput").value,
@@ -91,29 +90,11 @@ characterForm.addEventListener("submit", (e) => {
   };
 
   if (photoInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (event) => saveChar(event.target.result);
     reader.readAsDataURL(photoInput.files[0]);
   } else {
-    // Không có ảnh thì vẫn lưu
-    const newChar = {
-      photo: "",
-      name: document.getElementById("nameInput").value,
-      age: document.getElementById("ageInput").value,
-      birthplace: document.getElementById("birthplaceInput").value,
-      residence: document.getElementById("residenceInput").value,
-      hair: document.getElementById("hairInput").value,
-      eye: document.getElementById("eyeInput").value,
-      height: document.getElementById("heightInput").value,
-      weight: document.getElementById("weightInput").value,
-      signature: document.getElementById("signatureInput").value,
-      skills: document.getElementById("skillsInput").value,
-      bio: document.getElementById("bioInput").value,
-      notes: document.getElementById("notesInput").value,
-    };
-    characters.push(newChar);
-    localStorage.setItem("characters", JSON.stringify(characters));
-    renderCharacters();
-    modal.style.display = "none";
-    characterForm.reset();
+    saveChar("");
   }
 });
 
