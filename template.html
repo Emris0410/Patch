@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Profile UI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bakerie&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../Patch/css/home.css">
+  <title>Character Manager</title>
+  <link rel="stylesheet" href="../Patch/css/template.css">
 </head>
 <body>
   <header>
     <div class="avatar">
-      <img src="./assets/images/logo.png" alt="Ảnh đại diện người dùng">
+      <img src="./assets/images/logo.png" alt="Logo">
     </div>
     <div class="search-section">
       <div class="search-bar">
@@ -25,7 +22,7 @@
         </button>
 
         <!-- Form chọn tag ẩn -->
-        <div id="tagSelectorModal" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #fff7e2; padding: 1rem; border-radius: 10px; z-index: 999; max-height: 80vh; overflow-y: auto; box-shadow: 0 0 10px rgba(0,0,0,0.3)">
+        <div id="tagFilterBox" class="tag-filter-box" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #fff7e2; padding: 1rem; border-radius: 10px; z-index: 999; max-height: 80vh; overflow-y: auto; box-shadow: 0 0 10px rgba(0,0,0,0.3)">
           <h3>Chọn Tag</h3>
           <div id="tagFormContent"></div>
           <div style="margin-top: 1rem; text-align: right;">
@@ -54,15 +51,36 @@
     </aside>
 
     <main class="main">
-      <section class="card-container">
-        <!-- Cards hiển thị ở đây -->
+      <section id="artContainer" class="art-container">
+        <!-- Các card sẽ render tại đây -->
       </section>
     </main>
   </div>
 
-  <script src="/Patch/script.js"></script>
+  <!-- Modal Form -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>Thêm nhân vật mới</h2>
+      <form id="characterForm">
+        <label>Ảnh: <input type="file" id="photoInput" accept="image/*"></label>
+        <label>Tên: <input type="text" id="nameInput"></label>
+        <label>Tuổi: <input type="number" id="ageInput"></label>
+        <label>Nơi sinh: <input type="text" id="birthplaceInput"></label>
+        <label>Nơi ở hiện tại: <input type="text" id="residenceInput"></label>
+        <label>Màu tóc: <input type="text" id="hairInput"></label>
+        <label>Màu mắt: <input type="text" id="eyeInput"></label>
+        <label>Chiều cao: <input type="text" id="heightInput"></label>
+        <label>Cân nặng: <input type="text" id="weightInput"></label>
+        <label>Chữ ký: <input type="text" id="signatureInput"></label>
+        <label>Kỹ năng: <textarea id="skillsInput"></textarea></label>
+        <label>Tiểu sử: <textarea id="bioInput"></textarea></label>
+        <label>Ghi chú: <textarea id="notesInput"></textarea></label>
+        <button type="submit">Lưu</button>
+      </form>
+    </div>
+  </div>
 
-  
-  
+  <script src="./js/template.js"></script>
 </body>
 </html>
