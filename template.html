@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Character Manager</title>
   <link rel="stylesheet" href="../Patch/css/template.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -15,23 +18,7 @@
       <div class="search-bar">
         <input id="searchInput" type="text" placeholder="Tìm kiếm...">
         <span>🔍</span>
-        <button id="addBtn" class="brown-button">+ Thêm nhân vật</button>
-        <button id="openTagSelector" class="icon-button" title="Chọn tag">
-          <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 512 512">
-            <path fill="#d6cbb1" d="M3.9 54.9C10.5 40.9 24.5 32 40 32l432 0c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9 320 448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6l0-79.1L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/>
-          </svg>
-        </button>
-
-        <!-- Form chọn tag ẩn -->
-        <div id="tagFilterBox" class="tag-filter-box" style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #fff7e2; padding: 1rem; border-radius: 10px; z-index: 999; max-height: 80vh; overflow-y: auto; box-shadow: 0 0 10px rgba(0,0,0,0.3)">
-          <h3>Chọn Tag</h3>
-          <div id="tagFormContent"></div>
-          <div style="margin-top: 1rem; text-align: right;">
-            <button id="applyTagsBtn" class="brown-button">Xác nhận</button>
-            <button id="closeTagSelector" class="brown-button outline">Đóng</button>
-          </div>
-        </div>
-
+        <button id="openTagSelector" class="icon-button" title="Chọn tag">🏷</button>
       </div>
       <div class="top-filters"></div>
     </div>
@@ -40,20 +27,28 @@
   <div class="layout">
     <aside class="sidebar-container">
       <div class="sidebar">
-        <button><a href="home.html" class="sidebar-button">Thông tin cơ bản ban đầu</a></button>
-        <button><a href="template.html" class="sidebar-button">Template</a></button>
-        <button><a href="#" class="sidebar-button">Pro5 các au khác</a></button>
-        <button><a href="#" class="sidebar-button">Các câu chuyện</a></button>
-        <button><a href="#" class="sidebar-button">Fic</a></button>
-        <button><a href="#" class="sidebar-button">Lưu art</a></button>
-        <button><a href="FunGame.html" class="sidebar-button">Fun Game</a></button>
-        <button><a href="art.html" class="sidebar-button">OCTP</a></button>
+        <button><a href="home.html">Thông tin cơ bản ban đầu</a></button>
+        <button><a href="template.html">Template</a></button>
+        <button><a href="#">Pro5 các au khác</a></button>
+        <button><a href="#">Các câu chuyện</a></button>
+        <button><a href="#">Fic</a></button>
+        <button><a href="#">Lưu art</a></button>
+        <button><a href="FunGame.html">Fun Game</a></button>
+        <button><a href="art.html">OCTP</a></button>
       </div>
     </aside>
 
     <main class="main">
+      <section id="formWrapper" class="form-wrapper">
+        <!-- Form template -->
+        <div class="form-block" id="charFormBlock">
+          <h3>Character Sheet</h3>
+          <button class="add-button" data-form="characterForm">+ Thêm</button>
+        </div>
+      </section>
+
       <section id="artContainer" class="art-container">
-        <!-- Các card sẽ render tại đây -->
+        <!-- Cards sẽ render ở đây -->
       </section>
     </main>
   </div>
@@ -82,6 +77,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="./js/template.js"></script>
 </body>
 </html>
