@@ -8,6 +8,7 @@ const characterForm = document.getElementById("characterForm");
 const photoInput = document.getElementById("photoInput");
 
 // Render card
+// Render card
 function renderCharacters() {
   artContainer.innerHTML = "";
 
@@ -23,26 +24,14 @@ function renderCharacters() {
             <div class="field"><span class="field-label">CURRENT RESIDENCE:</span> ...</div>
           </div>
         </div>
-        <div class="middle-section">
-          <div class="left-col">
-            <div class="field"><span class="field-label">HEIGHT:</span> ...</div>
-            <div class="field"><span class="field-label">WEIGHT:</span> ...</div>
-            <div class="field"><span class="field-label">SIGNATURE:</span> ...</div>
-          </div>
-          <div class="right-col">
-            <div class="skills-big">
-              <span class="field-label">SKILLS/ABILITIES:</span> ...
-            </div>
-          </div>
-        </div>
-        <div class="big-field"><span class="field-label">BIOGRAPHY:</span> ...</div>
-        <div class="notes"><span class="field-label">NOTES:</span> ...</div>
       </div>
     `;
   } else {
-    characters.forEach((char) => {
+    characters.forEach((char, index) => {
       const card = document.createElement("div");
       card.classList.add("sheet");
+      card.setAttribute("id", `sheet-${index}`);
+
       card.innerHTML = `
         <div class="top-section">
           <div class="photo-box">
@@ -74,11 +63,24 @@ function renderCharacters() {
         </div>
         <div class="big-field"><span class="field-label">BIOGRAPHY:</span> ${char.bio}</div>
         <div class="notes"><span class="field-label">NOTES:</span> ${char.notes}</div>
+        <button class="download-btn" onclick="downloadSheet(${index})">📥 Tải PNG</button>
       `;
       artContainer.appendChild(card);
     });
   }
 }
+
+// Hàm tải PNG
+function downloadSheet(index) {
+  const sheet = document.getElementById(`sheet-${index}`);
+  html2canvas(sheet, { scale: 2 }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = `character-${index + 1}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
+
 
 
 // Modal control

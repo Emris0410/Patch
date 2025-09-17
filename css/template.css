@@ -16,9 +16,16 @@
   font-style: normal;
 }
 
+/* Input dễ đọc */
 input, textarea, select {
+  font-family: Arial, sans-serif;
+}
+
+/* Font hiển thị sau khi lưu */
+.sheet {
   font-family: 'Oooh Baby', cursive;
 }
+
 
 
 * {
